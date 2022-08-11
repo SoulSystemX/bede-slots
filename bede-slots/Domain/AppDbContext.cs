@@ -39,10 +39,6 @@ namespace bede_slots.Domain
         {
             // create object 
 
-            //modelbuilder.Entity<class>().HasData(objec)
-
-            // may not need
-
             List<SlotItem> slotItemSeedData = new List<SlotItem>();
 
             slotItemSeedData.Add(new SlotItem(){Id = 1 ,Name = "Apple", Symbol = 'A', Coefficent = 0.4m, ProbabilityOfAppearance = 45 });
