@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bede-slots", "bede-slots\bede-slots.csproj", "{3C4FB826-2DD3-4EA6-967C-776DE1BFE944}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bede-slots.tests", "bede-slots.tests\bede-slots.tests.csproj", "{4E134640-94C2-4F4B-8C46-2681FE5495BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C4FB826-2DD3-4EA6-967C-776DE1BFE944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C4FB826-2DD3-4EA6-967C-776DE1BFE944}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C4FB826-2DD3-4EA6-967C-776DE1BFE944}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C4FB826-2DD3-4EA6-967C-776DE1BFE944}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E134640-94C2-4F4B-8C46-2681FE5495BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E134640-94C2-4F4B-8C46-2681FE5495BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E134640-94C2-4F4B-8C46-2681FE5495BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E134640-94C2-4F4B-8C46-2681FE5495BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5AB8780D-192E-41D1-AE3E-4A453BAF2467}
+	EndGlobalSection
+EndGlobal
