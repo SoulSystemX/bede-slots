@@ -25,7 +25,7 @@ select `c# (.NET)`
 Then choose all the defaults and no additional tools
 
 When it loads select yes here:
-![[Pasted image 20220812143600.png]]
+![Pasted image 20220812143600.png](/static/Pasted%20image%20220812143600.png)
 
 Then in the console type `cd bede-slots` then type  `dotnet run` to start the backend. You may also use the run and debug menu from the side bar if you want to step through code.
 ![Pasted image 20220812143755.png](/static/Pasted%20image%2020220812143755.png)
