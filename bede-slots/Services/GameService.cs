@@ -59,11 +59,13 @@ namespace bede_slots.Services
             // get all the slot items
             var slotItems = _unitOfWork.SlotItemRepo.GetAll();
 
+            //remove the players stake from their balance
             var player = await _unitOfWork.PlayerRepo.Get(playerId);
             player.Balance = player.Balance - stake;
             _unitOfWork.PlayerRepo.Update(player);
             await _unitOfWork.SaveAsync();
 
+            // generate a new gameboard 
             return GetGameBoard(slotItems);
         }
 
@@ -78,6 +80,7 @@ namespace bede_slots.Services
             foreach (var row in gameBoard)
             {
                 var coefficents = IsRowAWinner(row);
+
                 decimal finalCoefficent = 0.0m;
 
                 foreach (var coefficent in coefficents)
@@ -193,12 +196,13 @@ namespace bede_slots.Services
             {
                 if (Enumerable.Range(0, item.Value).Contains(selectedSlot))
                 {
+            // since we have a key for the randomly selected slotitem grab it and return it
                     return slotItems.Where(w => w.Id == item.Key).First();
                 }
 
             }
 
-            // since we have a key for the randomly selected slotitem grab it and return it
+            //Something went wrong with the value we sent in
             throw new Exception("Random number did not appear within the probability range");
         }
 
