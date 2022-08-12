@@ -6,16 +6,16 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["bede-slot-test/bede-slot-test.csproj", "bede-slot-test/"]
-RUN dotnet restore "bede-slot-test/bede-slot-test.csproj"
+COPY ["bede-slots/bede-slots.csproj", "bede-slots/"]
+RUN dotnet restore "bede-slots/bede-slots.csproj"
 COPY . .
-WORKDIR "/src/bede-slot-test"
-RUN dotnet build "bede-slot-test.csproj" -c Release -o /app/build
+WORKDIR "/src/bede-slots"
+RUN dotnet build "bede-slots.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "bede-slot-test.csproj" -c Release -o /app/publish
+RUN dotnet publish "bede-slots.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "bede-slot-test.dll"]
+ENTRYPOINT ["dotnet", "bede-slots.dll"]

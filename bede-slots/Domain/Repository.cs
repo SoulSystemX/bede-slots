@@ -29,11 +29,11 @@ namespace bede_slots.Domain
     internal class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
 
-        private readonly AppDbContext _appDbContext;
+        private readonly IAppDbContext _appDbContext;
 
         protected DbSet<TEntity> _entities;
 
-        public Repository(AppDbContext appDbContext)
+        public Repository(IAppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }

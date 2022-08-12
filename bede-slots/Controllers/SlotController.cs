@@ -49,7 +49,7 @@ namespace bede_slots.Controllers
         {
             SpinResultVM spinResult = new();
 
-            spinResult.Gameboard = _gameService.Spin(stake, 1);
+            spinResult.Gameboard = await _gameService.Spin(stake, 1);
             var coefficents = _gameService.CalcuateWinningRowsCoefficents(spinResult.Gameboard );
             var finalCoefficent = 0.0m;
 
@@ -58,7 +58,7 @@ namespace bede_slots.Controllers
                 finalCoefficent += coefficent;
             }
             
-            spinResult.Winnings = _gameService.CalculateWinnings(stake, 1, finalCoefficent);                  
+            spinResult.Winnings = await _gameService.CalculateWinnings(stake, 1, finalCoefficent);                  
             spinResult.Balance = _gameService.GetBalance(1);
 
             return Ok(ResponseModel.SuccessResponse("result", spinResult));

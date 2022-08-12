@@ -24,6 +24,13 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddScoped<IGameService, GameService>();
 
+builder.Services.AddCors( options => 
+{
+    options.AddPolicy(name: "corsPolicy", builder =>
+    {
+        builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
 
 
 var app = builder.Build();
@@ -35,6 +42,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("corsPolicy");
 app.UseAuthorization();
 
 app.MapControllers();

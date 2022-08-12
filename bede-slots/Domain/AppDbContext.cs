@@ -1,5 +1,6 @@
 ﻿using bede_slots.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace bede_slots.Domain
 {
@@ -10,6 +11,8 @@ namespace bede_slots.Domain
 
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
         Task<int> SaveChangesAsync();
+        void SaveChanges();
+
     }
 
     public class AppDbContext : DbContext, IAppDbContext
@@ -53,6 +56,11 @@ namespace bede_slots.Domain
             
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        }
+
+        void IAppDbContext.SaveChanges()
+        {
+             base.SaveChanges();
         }
 
     }

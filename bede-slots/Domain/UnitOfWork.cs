@@ -1,4 +1,5 @@
 ﻿using bede_slots.Models;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace bede_slots.Domain
@@ -6,7 +7,7 @@ namespace bede_slots.Domain
     public interface IUnitOfWork
     {
         Task<int> SaveAsync();
-        int Save();
+        void Save();
         void BeginTransaction();
         void CommitTransaction();
         void RollbackTransaction();
@@ -64,9 +65,9 @@ namespace bede_slots.Domain
                 dbContextTransaction.Rollback();
         }
 
-        public int Save()
+        public void Save()
         {
-          return _appDbContext.SaveChanges();
+           _appDbContext.SaveChanges();
         }
 
         public async Task<int> SaveAsync()
