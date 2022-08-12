@@ -8,7 +8,7 @@ namespace bede_slots.Services
     public interface IGameService
     {
         public void Deposit(decimal amount, int playerId);
-        public decimal GetBalance(int playerId);
+        public Task<decimal> GetBalance(int playerId);
         public  Task<List<List<SlotItem>>> Spin(decimal stake, int playerId);
         public List<Player> GetPlayer();
         public List<List<SlotItem>> GetGameBoard(IEnumerable<SlotItem> slotItems);
@@ -40,15 +40,16 @@ namespace bede_slots.Services
             return _unitOfWork.PlayerRepo.GetAll().ToList();
         }
 
-        public decimal GetBalance(int playerId)
+        public async Task<decimal> GetBalance(int playerId)
         {
-            return _unitOfWork.PlayerRepo.Get(playerId).Result.Balance;
+            var player = await _unitOfWork.PlayerRepo.Get(playerId);
+            return player.Balance;
         }
 
         public async Task<List<List<SlotItem>>> Spin(decimal stake, int playerId)
         {
 
-            var currentBalance = GetBalance(playerId); 
+            var currentBalance = await GetBalance(playerId); 
 
             if (currentBalance == 0.0m)
                 throw new Exception("Player's balance is 0");

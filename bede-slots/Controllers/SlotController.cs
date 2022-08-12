@@ -59,7 +59,7 @@ namespace bede_slots.Controllers
             }
             
             spinResult.Winnings = await _gameService.CalculateWinnings(stake, 1, finalCoefficent);                  
-            spinResult.Balance = _gameService.GetBalance(1);
+            spinResult.Balance = await _gameService.GetBalance(1);
 
             return Ok(ResponseModel.SuccessResponse("result", spinResult));
         }
