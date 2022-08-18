@@ -48,7 +48,9 @@ export default defineComponent({
  {
      await fetch(`http://localhost:5230/Slot/GetBalance`)
     .then(response => response.json())
-     .then(data => balance.value = data.output);
+     .then(data => balance.value = data.output.result);
+
+     console.log(balance)
   }
 
 watch(balance, b => { if(b <= 0) { gameEnded.value = true}  });   
